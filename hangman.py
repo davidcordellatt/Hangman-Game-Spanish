@@ -25,7 +25,10 @@ def select_word():
         if not ocult_word_index.get(letter): 
             ocult_word_index[letter] = []
         ocult_word_index[letter].append(a)
-    
+     for i in select_word:
+        y += 0.75
+        tries = int(y)
+        
     while True:
 
             os.system("clear")
