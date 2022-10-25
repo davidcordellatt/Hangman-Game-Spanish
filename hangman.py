@@ -37,8 +37,11 @@ def select_word():
             print("")
 
             letter = input("Ingresa una letra: ").strip().upper()
-            assert letter.isalpha (), "Solo puedes ingresar letras"
-
+            
+            if not letter.isalpha():
+              os.system("clear")
+              raise Exception('No se permite usar numeros')
+              
             if letter in select_word_list:
                 for idx in ocult_word_index[letter]:
                     ocult_word[idx] = letter
