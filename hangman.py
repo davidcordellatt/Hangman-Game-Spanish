@@ -44,6 +44,11 @@ def select_word():
             if not letter.isalpha():
               os.system("clear")
               raise Exception('No se permite usar numeros')
+                
+            if letter == select_word:
+              os.system("clear")
+              print(f"¡Muy bien {name}!, la palabra correcta era {select_word}" )
+              break
               
             if letter in select_word_list:
                 for idx in ocult_word_index[letter]:
