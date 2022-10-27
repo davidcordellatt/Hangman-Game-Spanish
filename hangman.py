@@ -17,7 +17,7 @@ def random_word(filepath="./data.txt"):
         return(words)
            
 def select_word():
-    y = 0
+    t = 0
     data = random_word(filepath="./data.txt")
     select_word = random.choice(data)
     select_word_list = [letter for letter in select_word]
@@ -29,8 +29,8 @@ def select_word():
         ocult_word_index[letter].append(a)
       
     for i in select_word:
-      y += 0.75
-      tries = int(y)
+      t += 0.75
+      tries = int(t)
       
     while True:
             
@@ -49,12 +49,12 @@ def select_word():
             if not letter.isalpha():
               os.system("clear")
               raise Exception('No se permite usar numeros')
-              continue
-              select_word()
-              
+              print(creditos)
+                            
             if letter == select_word:
               os.system("clear")
               print(f"¡Muy bien {name}!, la palabra correcta era {select_word}" )
+              print(creditos)
               break
               
       
@@ -68,7 +68,9 @@ def select_word():
                 if tries == 0:
                   os.system("clear")
                   print(f"{name} ¡Perdiste!, la palabra correcta era {select_word}" )
+                  print(creditos)
                   break
+              
       
             if "_" not in ocult_word:
                 os.system("clear")
