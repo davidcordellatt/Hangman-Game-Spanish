@@ -1,6 +1,7 @@
 import os
 import random
 
+os.system('clear')
 name = input("¿Cual es tu nombre?: ")
 name = name.strip().capitalize()
 
@@ -39,7 +40,6 @@ def select_word():
             print("¡Adivina la palabra!")
             print(f"Tienes {tries} intentos")
                       
-      
             for under in ocult_word:
                 print(under + " ", end=" ")
             print("")
@@ -57,7 +57,6 @@ def select_word():
               print(creditos)
               break
               
-      
             if letter in select_word_list:
                 for idx in ocult_word_index[letter]:
                     ocult_word[idx] = letter
@@ -71,15 +70,12 @@ def select_word():
                   print(creditos)
                   break
               
-      
             if "_" not in ocult_word:
                 os.system("clear")
                 print("¡Felicidades! " + name + " La palabra era", select_word)
                 print(creditos)
                 break
               
-            
-        
 select_word()
 
 if __name__ == '__main__':
