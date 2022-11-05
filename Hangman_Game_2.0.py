@@ -17,6 +17,7 @@ def game_mode():
 
     t = 0
     m = ""
+    special_vocals = str
 
     select_line = random.choice(data)
     select_line_list = [letter for letter in select_line]
@@ -39,19 +40,25 @@ def game_mode():
             tries = int(t)
 
     space = " "
-
     if space in ocult_line_index:
         for idx in ocult_line_index[space]:
             ocult_line[idx] = space
 
     coma = ","
-
     if coma in ocult_line_index:
         for idx in ocult_line_index[coma]:
             ocult_line[idx] = coma
 
     while True:
 
+        if "_" not in ocult_line:
+            os.system("clear")
+            print(f"""¡Felicidades! {name}, la {modus} era: 
+
+{select_line.capitalize()}""")
+            win()
+            break
+        
         os.system("clear")
         print(f"Buena suerte, {name}.")
         print(m)
@@ -63,7 +70,7 @@ def game_mode():
             print(under + " ", end=" ")
         print("")
 
-        letter = input("\n" "Ingresa una letra: ").strip().upper()
+        letter = input("\n" "Ingresa una letra: ").upper()
 
         if letter == select_line:
             os.system("clear")
@@ -73,30 +80,50 @@ def game_mode():
             win()     
             break  
 
-        elif "_" not in ocult_line:
-            os.system("clear")
-            print(f"""¡Felicidades! {name}, la {modus} era: 
+        if letter == 'A':
+            special_vocals ='Á'
+            for idx in ocult_line_index[special_vocals]:
+                    ocult_line[idx] = special_vocals
 
-{select_line.capitalize()}""")
-            win()
-            break
+        if letter == 'E':
+            special_vocals ='É'
+            for idx in ocult_line_index[special_vocals]:
+                    ocult_line[idx] = special_vocals
 
-        if "_" not in ocult_line:
-            tries = tries - 1
-                  
+        if letter == 'I':
+            special_vocals ='Í'
+            for idx in ocult_line_index[special_vocals]:
+                    ocult_line[idx] = special_vocals
+
+        if letter == 'O':
+            special_vocals ='Ó'
+            for idx in ocult_line_index[special_vocals]:
+                    ocult_line[idx] = special_vocals
+
+        if letter == 'U':
+
+            special_vocals ='Ú'
+            for idx in ocult_line_index[special_vocals]:
+                    ocult_line[idx] = special_vocals
+
+            special_vocals ='Ü'
+            for idx in ocult_line_index[special_vocals]:
+                    ocult_line[idx] = special_vocals
+
         if letter in select_line_list:
             for idx in ocult_line_index[letter]:
                 ocult_line[idx] = letter
 
-        elif letter not in select_line_list:
+        if letter and special_vocals not in select_line_list:
             tries = tries - 1
 
-            if not letter.isalpha():    
-                m = "No deberías intentar con numeros \n"
+        if not letter.isalpha():    
+            m = "No deberías intentar con numeros \n"
 
         if tries == 0:
             os.system("clear")
-            print(f"{name} ¡Perdiste!, la palabra correcta era {select_line.capitalize()}" )
+            print(f"""{name} ¡Perdiste!, la {modus} correcta era:
+{select_line.capitalize()}""" )
             reload()
             break
 
